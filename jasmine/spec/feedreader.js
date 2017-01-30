@@ -30,23 +30,23 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('itens all have url defined and not empty', function() {
+        it('itens all have url defined and not empty', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined(); // checks if the url is defined
                 expect(feed.url.length).toBeGreaterThan(0); // checks if the url is not empty
             });
-         });
+        });
 
         /* Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('itens all have name defined and not empty', function() {
+        it('itens all have name defined and not empty', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined(); // checks if the name is defined
                 expect(feed.name.length).toBeGreaterThan(0); // checks if the name is not empty
             });
-         });
+        });
     });
 
 
@@ -60,17 +60,17 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('menu is hidden by default', function() {
+        it('menu is hidden by default', function() {
             body_classes = document.body.className;
             expect(body_classes).toContain('menu-hidden');
-         });
+        });
 
          /* Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('menu changes visibility when clicked', function() {
+        it('menu changes visibility when clicked', function() {
             menu.click(); // Opens the menu
             body_classes = document.body.className;
             expect(body_classes).not.toContain('menu-hidden');
@@ -78,16 +78,14 @@ $(function() {
             menu.click(); // Closes the menu
             body_classes = document.body.className;
             expect(body_classes).toContain('menu-hidden');
-         });
+        });
     });
 
     /* Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
         // Using "done" to deal with asynchronous calls
         beforeEach(function(done) {
-            loadFeed(0,function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         /* Write a test that ensures when the loadFeed
@@ -97,7 +95,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('there is at least one .entry element', function() {
-            expect(document.getElementsByClassName('entry').length).not.toBe(0);
+            expect($('.feed .entry').length).not.toBe(0);
         });
      });
 
